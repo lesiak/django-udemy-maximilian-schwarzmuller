@@ -25,12 +25,13 @@ def monthly_challenge_by_number(request, month):
         redirect_path = reverse('month-challenge', args=[redirect_month])
         return HttpResponseRedirect(redirect_path)
     except IndexError:
-        return HttpResponseNotFound(f"Month {month} is not supported")
+        return HttpResponseNotFound(f"<h1>Month {month} is not supported</h1>")
 
 
 def monthly_challenge(request, month):
     try:
         challenge_text = monthly_challenges[month]
-        return HttpResponse(challenge_text)
+        response_data = f"<h1>{challenge_text}</h1>"
+        return HttpResponse(response_data)
     except KeyError as e:
-        return HttpResponseNotFound(f"Month {e} is not supported")
+        return HttpResponseNotFound(f"<h1>Month {month} is not supported</h1>")
