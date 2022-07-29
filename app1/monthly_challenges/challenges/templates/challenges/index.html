@@ -5,6 +5,10 @@
     <title>All Challenges</title>
 </head>
 <body>
-
+    <ul>
+        {% for month in months %}
+        <li><a href="">{{ month|capfirst }}</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
