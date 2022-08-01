@@ -81,8 +81,13 @@ def starting_page(request):
 
 
 def posts_page(request):
-    return render(request, "blog/all-posts.html")
+    return render(request, "blog/all-posts.html", {
+        "posts": sorted(posts, key=get_date)
+    })
 
 
 def post_details_page(request, slug):
-    return render(request, "blog/post-details.html")
+    post = next(post for post in posts if post['slug'] == slug)
+    return render(request, "blog/post-details.html", {
+        "post": post
+    })
