@@ -5,7 +5,7 @@ from django.shortcuts import render
 posts = [
     {
         "slug": "hike-in-the-mountains",
-        "image": "mountains.jpg",
+        "image": "mountains.jpeg",
         "author": "Maximilian",
         "date": date(2021, 7, 21),
         "title": "Mountain Hiking",
@@ -26,7 +26,7 @@ posts = [
     },
     {
         "slug": "programming-is-fun",
-        "image": "coding.jpg",
+        "image": "coding.jpeg",
         "author": "Maximilian",
         "date": date(2022, 3, 10),
         "title": "Programming Is Great!",
@@ -47,7 +47,7 @@ posts = [
     },
     {
         "slug": "into-the-woods",
-        "image": "woods.jpg",
+        "image": "woods.jpeg",
         "author": "Maximilian",
         "date": date(2020, 8, 5),
         "title": "Nature At Its Best",
@@ -68,13 +68,21 @@ posts = [
     }
 ]
 
+def get_date(post):
+    return post['date']
+
+
 def starting_page(request):
-    return render(request, "blog/index.html")
+    sorted_posts = sorted(posts, key=get_date)
+    latest_posts = sorted_posts[-3:]
+    return render(request, "blog/index.html", {
+        "posts": latest_posts
+    })
 
 
-def posts(request):
+def posts_page(request):
     return render(request, "blog/all-posts.html")
 
 
-def post_details(request, slug):
+def post_details_page(request, slug):
     return render(request, "blog/post-details.html")
