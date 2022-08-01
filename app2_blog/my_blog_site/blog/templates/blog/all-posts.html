@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All My Posts{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/all-posts.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/post.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section id="all-posts">
+        <h2>My Collected Posts</h2>
+        <ul>
+            <li>{% include "blog/includes/post.html" %}</li>
+            <li>{% include "blog/includes/post.html" %}</li>
+            <li>{% include "blog/includes/post.html" %}</li>
+            <li>{% include "blog/includes/post.html" %}</li>
+            <li>{% include "blog/includes/post.html" %}</li>
+            <li>{% include "blog/includes/post.html" %}</li>
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>What I Do</h2>
+        <p>I like programming</p>
+        <p>My goal is to learn Django</p>
+    </section>
+{% endblock %}
