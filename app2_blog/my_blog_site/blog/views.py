@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
@@ -11,4 +10,4 @@ def posts(request):
 
 
 def post_details(request, slug):
-    return HttpResponse("Single Post: " + slug)
+    return render(request, "blog/post-details.html")
